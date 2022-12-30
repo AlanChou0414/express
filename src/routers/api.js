@@ -2,14 +2,34 @@ const express = require('express');
 
 const router = express.Router();
 
-const data = [{
+// databases
+const userlist = [{
   id: 1,
-  title: 'Banana',
+  username: 'Alan',
+  age: 27,
 }];
 
-// http://localhost:3001/api/products
-router.get('/products', (req, res, next) => {
-  res.json(data);
+// http://localhost:3001/api/userslist
+router.get('/userslist', (req, res) => {
+  res.json({
+    status: res.statusCode,
+    success: true,
+    userlist,
+  });
+});
+
+router.post('/userslist', (req, res) => {
+  const user = req.body;
+  userlist.push({
+    id: new Date().getTime(),
+    ...user,
+  });
+
+  res.json({
+    status: res.statusCode,
+    success: true,
+    userlist,
+  });
 });
 
 module.exports = router;
