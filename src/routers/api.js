@@ -3,33 +3,22 @@ const express = require('express');
 const router = express.Router();
 
 // databases
-const userlist = [{
-  id: 1,
-  username: 'Alan',
-  age: 27,
+const data = [{
+  user_email: 'good@gmail.com',
+  user_password: '123456',
 }];
 
-// http://localhost:3001/api/userslist
-router.get('/userslist', (req, res) => {
-  res.json({
-    status: res.statusCode,
-    success: true,
-    userlist,
-  });
+// http://localhost:3001/api/signup
+router.get('/signup', (req, res) => {
+  const member = req.body;
+  data.push({ member });
+  res.json({ member });
 });
 
-router.post('/userslist', (req, res) => {
-  const user = req.body;
-  userlist.push({
-    id: new Date().getTime(),
-    ...user,
-  });
-
-  res.json({
-    status: res.statusCode,
-    success: true,
-    userlist,
-  });
+router.post('/signup', (req, res) => {
+  const member = req.body;
+  data.push({ member });
+  res.json(member).redirect('/signup.html');
 });
 
 module.exports = router;
