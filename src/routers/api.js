@@ -17,8 +17,10 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', (req, res) => {
   const member = req.body;
-  data.push({ member });
-  res.json(member).redirect('/signup.html');
+  data.push(member);
+  console.log(data);
+  res.redirect('/signup.html');
+  res.end();
 });
 
 module.exports = router;

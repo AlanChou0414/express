@@ -15,15 +15,15 @@
         <div class="row justify-content-center">
             <div class="col-3">
                 <p class="fs-1 text-center">Sign up</p>
-                <form>
+                <form action="/api/signup" method="post">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
+                        <input type="email" class="form-control" name="user_email" id="email" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" id="password">
+                        <input type="password" class="form-control" name="user_password" id="password">
                     </div>
                     <div class="text-center mt-lg-4">
                         <button type="submit" class="btn btn-outline-dark">Submit</button>
@@ -43,9 +43,7 @@
     const alertContent = document.querySelector('#status');
     submit.addEventListener('click', () => {
         const url = 'http://localhost:3001/api/signup';
-        fetch(url,{
-            method:'POST'
-        })
+        fetch(url)
             .then(res => res.json())
             .then(data => {
                 alertContent.innerHTML =
