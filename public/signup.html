@@ -39,21 +39,7 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"></script>
 <script>
-    const submit = document.querySelector('button[type="submit"]');
-    const alertContent = document.querySelector('#status');
-    submit.addEventListener('click', () => {
-        const url = 'http://localhost:3001/api/signup';
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-                alertContent.innerHTML =
-                    `
-                    <div class="alert alert-success text-center" role="alert">
-                        Success!!
-                    </div>
-                    `;
-            })
-    });
+    
 </script>
 
 </html>
